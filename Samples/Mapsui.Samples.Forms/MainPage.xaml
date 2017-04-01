@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mapsui.Samples.Forms"
+			 xmlns:mapsui="clr-namespace:Mapsui.Forms;assembly=Mapsui.Forms"
+			 xmlns:converter="clr-namespace:Mapsui.Forms.Converter;assembly=Mapsui.Forms"
+             x:Class="Mapsui.Samples.Forms.MainPage">
+
+  <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
+
+	<Label Text="Welcome to MapsUI!"
+		   VerticalOptions="Fill"
+		   HorizontalOptions="Center" />
+
+	<mapsui:MapView x:Name="mapView"
+		  VerticalOptions="FillAndExpand"
+		  HorizontalOptions="Fill"
+		  BackgroundColor="Gray" 
+		  Margin="10" />
+
+	<StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="10" >
+
+	  <Label BindingContext="{x:Reference Name=mapView}"
+			 Text="{Binding Center, Converter={converter:ConverterPosition}, ConverterParameter='P DD° MM.mmm\'|P DDD° MM.mmm\''}"
+			 VerticalOptions="Fill"
+			 HorizontalOptions="Center" />
+
+	</StackLayout>
+
+	<Button Text="Color" Clicked="OnButtonClicked" />
+
+  </StackLayout>
+
+</ContentPage>
