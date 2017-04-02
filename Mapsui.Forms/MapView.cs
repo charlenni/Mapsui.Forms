@@ -52,6 +52,12 @@ namespace Mapsui.Forms
 				if (nativeMap == value)
 					return;
 
+				if (nativeMap != null && nativeMap.Viewport != null)
+				{
+					// Remove listener for Viewport events
+					nativeMap.Viewport.ViewportChanged -= ViewportPropertyChanged;
+				}
+
 				nativeMap = value;
 
 				// Add listener for Viewport events
