@@ -8,22 +8,22 @@
   <Target Name="BuildRelease" DependsOnTargets="RestorePackages">
     <MSBuild Projects="$(SolutionFile)"
              Targets="Mapsui_Forms"
-             Properties="Configuration=Release;Platform=AnyCPU;BaseIntermediateOutputPath=$(MSBuildProjectDirectory)\..\obj\portable\;OutputPath=$(MSBuildProjectDirectory)\..\Release\Portable\"
+             Properties="Configuration=Release;Platform=Any CPU;BaseIntermediateOutputPath=$(MSBuildProjectDirectory)\..\obj\portable\;OutputPath=$(MSBuildProjectDirectory)\..\Release\Portable\"
              RunEachTargetSeparately="true"/>
 
     <MSBuild Projects="$(SolutionFile)"
              Targets="Mapsui_Forms;Mapsui_Forms_Uwp"
-             Properties="Configuration=Release;Platform=AnyCPU;BaseIntermediateOutputPath=$(MSBuildProjectDirectory)\..\obj\UWP\;OutputPath=$(MSBuildProjectDirectory)\..\Release\UWP\"
+             Properties="Configuration=Release;Platform=Any CPU;BaseIntermediateOutputPath=$(MSBuildProjectDirectory)\..\obj\UWP\;OutputPath=$(MSBuildProjectDirectory)\..\Release\UWP\"
              RunEachTargetSeparately="true"/>
 
     <MSBuild Projects="$(SolutionFile)"
              Targets="Mapsui_Forms;Mapsui_Forms_Android"
-             Properties="Configuration=Release;Platform=AnyCPU;BaseIntermediateOutputPath=$(MSBuildProjectDirectory)\..\obj\Xamarin.Android\;OutputPath=$(MSBuildProjectDirectory)\..\Release\Xamarin.Android\"
+             Properties="Configuration=Release;Platform=Any CPU;BaseIntermediateOutputPath=$(MSBuildProjectDirectory)\..\obj\Xamarin.Android\;OutputPath=$(MSBuildProjectDirectory)\..\Release\Xamarin.Android\"
              RunEachTargetSeparately="true"/>
 
     <MSBuild Projects="$(SolutionFile)"
              Targets="Mapsui_Forms;Mapsui_Forms_iOS"
-             Properties="Configuration=Release;Platform=AnyCPU;BaseIntermediateOutputPath=$(MSBuildProjectDirectory)\..\obj\Xamarin.iOS\;OutputPath=$(MSBuildProjectDirectory)\..\Release\Xamarin.iOS\"
+             Properties="Configuration=Release;Platform=Any CPU;BaseIntermediateOutputPath=$(MSBuildProjectDirectory)\..\obj\Xamarin.iOS\;OutputPath=$(MSBuildProjectDirectory)\..\Release\Xamarin.iOS\"
              RunEachTargetSeparately="true"/>
 
   </Target>

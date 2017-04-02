@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -35,11 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Converter\Converter.cs" />
-    <Compile Include="Converter\ConverterPosition.cs" />
-    <Compile Include="Converter\ConverterToLatitude.cs" />
-    <Compile Include="Converter\ConverterToLatLon.cs" />
-    <Compile Include="Converter\ConverterToLongitude.cs" />
     <Compile Include="Xamarin\Distance.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Xamarin\MapSpan.cs" />

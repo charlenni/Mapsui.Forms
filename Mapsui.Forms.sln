@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapsui.Forms.Android", "Map
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapsui.Forms", "Mapsui.Forms\Mapsui.Forms.csproj", "{5169A300-5FAF-4625-8AA4-96B477D85296}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapsui.Forms.UWP", "Mapsui.Forms.UWP\Mapsui.Forms.UWP.csproj", "{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapsui.Forms.Uwp", "Mapsui.Forms.Uwp\Mapsui.Forms.Uwp.csproj", "{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapsui.Forms.iOS", "Mapsui.Forms.iOS\Mapsui.Forms.iOS.csproj", "{ACDEBEF6-F717-44B6-AA0C-7CCDF3E553CB}"
 EndProject
@@ -220,7 +220,8 @@ Global
 		{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}.Debug|x86.ActiveCfg = Debug|x86
 		{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}.Debug|x86.Build.0 = Debug|x86
 		{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}.Debug|x86.Deploy.0 = Debug|x86
-		{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}.Release|Any CPU.ActiveCfg = Release|x86
+		{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}.Release|ARM.ActiveCfg = Release|ARM
 		{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}.Release|ARM.Build.0 = Release|ARM
 		{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}.Release|ARM.Deploy.0 = Release|ARM

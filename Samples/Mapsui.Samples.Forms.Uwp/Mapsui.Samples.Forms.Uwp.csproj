@@ -129,9 +129,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Mapsui.Forms.UWP\Mapsui.Forms.UWP.csproj">
+    <ProjectReference Include="..\..\Mapsui.Forms.UWP\Mapsui.Forms.Uwp.csproj">
       <Project>{ABEE10F8-06F2-4ECF-998E-6E1A6AC1D7BE}</Project>
-      <Name>Mapsui.Forms.UWP</Name>
+      <Name>Mapsui.Forms.Uwp</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mapsui.Samples.Forms\Mapsui.Samples.Forms.csproj">
       <Project>{88aef3ff-b1c5-4863-832f-bd21887fb32b}</Project>
