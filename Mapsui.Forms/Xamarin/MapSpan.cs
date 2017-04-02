@@ -2,6 +2,9 @@
 
 namespace Xamarin.Forms.Maps
 {
+	/// <summary>
+	/// MapSpan represents an area of the earth
+	/// </summary>
 	public sealed class MapSpan
 	{
 		const double EarthRadiusKm = 6371;

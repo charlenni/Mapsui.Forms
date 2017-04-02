@@ -2,9 +2,13 @@
 
 namespace Xamarin.Forms.Maps
 {
+	/// <summary>
+	/// Distance between to positions
+	/// </summary>
 	public struct Distance
 	{
 		const double MetersPerMile = 1609.344;
+		const double MetersPerNauticalMile = 1852.216;
 		const double MetersPerKilometer = 1000.0;
 
 		public Distance(double meters)
@@ -17,6 +21,8 @@ namespace Xamarin.Forms.Maps
 		public double Miles => Meters / MetersPerMile;
 
 		public double Kilometers => Meters / MetersPerKilometer;
+
+		public double NauticalMiles => Meters / MetersPerNauticalMile;
 
 		public static Distance FromMiles(double miles)
 		{
@@ -46,6 +52,16 @@ namespace Xamarin.Forms.Maps
 				kilometers = 0;
 			}
 			return new Distance(kilometers * MetersPerKilometer);
+		}
+
+		public static Distance FromNauticalMiles(double miles)
+		{
+			if (miles < 0)
+			{
+				Debug.WriteLine("Negative values for distance not supported");
+				miles = 0;
+			}
+			return new Distance(miles * MetersPerMile);
 		}
 
 		public bool Equals(Distance other)
