@@ -27,9 +27,10 @@
 	<StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="10" >
 
 	  <Label BindingContext="{x:Reference Name=mapView}"
-			 Text="{Binding Center, Converter={StaticResource PositionToString}, ConverterParameter='P DD° MM.mmm|P DDD° MM.mmm|North|South|East|West'}"
+			 Text="{Binding Center, Converter={StaticResource PositionToString}, ConverterParameter='P DD° MM.mmm\'|P DDD° MM.mmm\'|North|South|East|West'}"
 			 VerticalOptions="Fill"
 			 HorizontalOptions="Center"
+             HorizontalTextAlignment="Center"
              TextColor="Red"/>
 
 	</StackLayout>

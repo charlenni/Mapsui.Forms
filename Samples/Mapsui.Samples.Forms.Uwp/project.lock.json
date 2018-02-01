@@ -27740,6 +27740,7 @@
       "packagesPath": "C:\\Users\\weltz\\.nuget\\packages\\",
       "outputPath": "C:\\Entwicklung\\Mapsui.Forms\\Samples\\Mapsui.Samples.Forms.Uwp\\obj\\",
       "projectStyle": "ProjectJson",
+      "validateRuntimeAssets": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
       ],

@@ -1,7 +1,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <SolutionFile>.\..\Mapsui.Forms.sln</SolutionFile>
+    <SolutionFile>.\..\Mapsui.sln</SolutionFile>
     <SolutionDir>$(MSBuildProjectDirectory)</SolutionDir>
     <AsmFileVersion>$(AsmVersion)</AsmFileVersion>
     <NuGetVersion>$(AsmVersion)</NuGetVersion>
@@ -23,7 +23,7 @@
     <FileUpdate Files="@(AssemblyFiles)"
         Multiline="true"
         Singleline="false"
-        Regex="(AssemblyVersion|AssemblyFileVersionAttribute|AssemblyFileVersion)\(&quot;(\s*)?&quot;\)"
+        Regex="(AssemblyVersion|AssemblyFileVersionAttribute|AssemblyFileVersion)\(&quot;(.*?)?&quot;\)"
         ReplacementText="$1(&quot;$(AsmVersion)&quot;)" />
 </Target>
 </Project>
