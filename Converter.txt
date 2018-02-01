@@ -1,0 +1,1 @@
+ , Converter={converter:ConverterPosition}, ConverterParameter='P DD° MM.mmm\'|P DDD° MM.mmm\''}"

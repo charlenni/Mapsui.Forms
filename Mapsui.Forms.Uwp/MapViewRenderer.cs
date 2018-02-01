@@ -11,10 +11,10 @@ namespace Mapsui.Forms.Uwp
 	public class MapViewRenderer : ViewRenderer<MapView, Mapsui.UI.Uwp.MapControl>
 	{
 		// MapsUI Native UWP implementation
-		Mapsui.UI.Uwp.MapControl mapNativeControl;
+		Mapsui.UI.Uwp.MapControl mapControl;
 
 		// Our MapsUI Forms Control
-		MapView mapViewControl;
+		MapView mapView;
 
 		protected override void OnElementChanged(ElementChangedEventArgs<MapView> e)
 		{
@@ -25,29 +25,29 @@ namespace Mapsui.Forms.Uwp
 				MessagingCenter.Unsubscribe<MapView>(this, "Refresh");
 			}
 
-			if (mapViewControl == null && e.NewElement != null)
+			if (mapView == null && e.NewElement != null)
 			{
 				// Get the MapsUI Forms control
-				mapViewControl = e.NewElement as MapView;
+				mapView = e.NewElement as MapView;
 				// Subscribe messages for refreshing the map control
 				MessagingCenter.Subscribe<MapView>(this, "Refresh", (sender) => {
-					mapNativeControl?.RefreshGraphics();
+					mapControl?.RefreshGraphics();
 				});
 			}
 
-			if (mapNativeControl == null)
+			if (mapControl == null)
 			{
 				// Set Native UWP implementation
-				mapNativeControl = new Mapsui.UI.Uwp.MapControl();
+				mapControl = new Mapsui.UI.Uwp.MapControl();
 
 				// Link our Forms control to the Native control
-				mapNativeControl.Map = mapViewControl.Map;
+				mapControl.Map = mapView.Map;
 
 				// Get events from Map
-				mapNativeControl.Map.PropertyChanged += mapViewControl.MapPropertyChanged;
+				mapControl.Map.PropertyChanged += mapView.MapPropertyChanged;
 
 				// Set native app
-				SetNativeControl(mapNativeControl);
+				SetNativeControl(mapControl);
 			}
 		}
 	}

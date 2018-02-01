@@ -21,8 +21,6 @@ namespace Mapsui.Forms.Tests.Xamarin
 			var position2 = new Position(-30.12345, -120.12345);
 
 			Assert.AreEqual("S 30° 07.407' W 120° 07.407'", position2.ToString());
-
-			Assert.Pass("Your first passing test");
 		}
 
 		[Test]
@@ -30,13 +28,11 @@ namespace Mapsui.Forms.Tests.Xamarin
 		{
 			var position1 = new Position(30.12345, 120.12345);
 
-			Assert.AreEqual("N 30.1234° E 120.1234°", position1.ToString("P DD.dddd°|P DDD.dddd°|N|S|E|W"));
+			Assert.AreEqual("N 30.1234° E 120.1235°", position1.ToString("P DD.dddd°|P DDD.dddd°|N|S|E|W"));
 
 			var position2 = new Position(-30.12345, -120.12345);
 
-			Assert.AreEqual("S 30.1234° W 120.1234°", position2.ToString("P DD.dddd°|P DDD.dddd°|N|S|E|W"));
-
-			Assert.Pass("Your first passing test");
+			Assert.AreEqual("S 30.1234° W 120.1235°", position2.ToString("P DD.dddd°|P DDD.dddd°|N|S|E|W"));
 		}
 
 		[Test]
@@ -44,13 +40,11 @@ namespace Mapsui.Forms.Tests.Xamarin
 		{
 			var position1 = new Position(30.12345, 120.12345);
 
-			Assert.AreEqual("N 30.1234° E 120.1234°", position1.ToString("P DD° MM' SS.s\"|P DD° MM' SS.s\"|N|S|E|W"));
+			Assert.AreEqual("N 30° 07' 24.4\" E 120° 07' 24.4\"", position1.ToString("P DD° MM' SS.s\"|P DD° MM' SS.s\"|N|S|E|W"));
 
 			var position2 = new Position(-30.12345, -120.12345);
 
-			Assert.AreEqual("S 30.1234° W 120.1234°", position2.ToString("P DD° MM' SS.s\"|P DD° MM' SS.s\"|N|S|E|W"));
-
-			Assert.Pass("Your first passing test");
+			Assert.AreEqual("S 30° 07' 24.4\" W 120° 07' 24.4\"", position2.ToString("P DD° MM' SS.s\"|P DD° MM' SS.s\"|N|S|E|W"));
 		}
 	}
 }

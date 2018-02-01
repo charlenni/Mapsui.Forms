@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-	<uses-sdk android:minSdkVersion="19" />
-	<application android:label="Mapsui.Samples.Forms.Droid"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Mapsui.Samples.Forms.Android.Mapsui.Samples.Forms.Android" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
+	<uses-sdk />
+	<application android:allowBackup="true" android:label="@string/app_name"></application>
 </manifest>

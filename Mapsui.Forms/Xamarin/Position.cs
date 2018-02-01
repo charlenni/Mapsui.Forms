@@ -111,7 +111,7 @@ namespace Xamarin.Forms.Maps
 			int count = CountChar(text, placeholder);
 
 			if (count > 0)
-				return text.Replace(new String(placeholder, count), string.Format("{0:" + new String('0', count) + "}", multiply ? value * Math.Pow(10, count) : value));
+				return text.Replace(new String(placeholder, count), string.Format("{0:" + new String('0', count) + "}", multiply ? Math.Round(value * Math.Pow(10, count), 0) : value));
 
 			return text;
 		}

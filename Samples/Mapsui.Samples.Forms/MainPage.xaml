@@ -6,7 +6,13 @@
 			 xmlns:converter="clr-namespace:Mapsui.Forms.Converter;assembly=Mapsui.Forms"
              x:Class="Mapsui.Samples.Forms.MainPage">
 
-  <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:PositionToStringConverter x:Key="PositionToString" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
 
 	<Label Text="Welcome to MapsUI!"
 		   VerticalOptions="Fill"
@@ -21,9 +27,10 @@
 	<StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="10" >
 
 	  <Label BindingContext="{x:Reference Name=mapView}"
-			 Text="{Binding Center, Converter={converter:ConverterPosition}, ConverterParameter='P DD° MM.mmm\'|P DDD° MM.mmm\''}"
+			 Text="{Binding Center, Converter={StaticResource PositionToString}, ConverterParameter='P DD° MM.mmm|P DDD° MM.mmm|North|South|East|West'}"
 			 VerticalOptions="Fill"
-			 HorizontalOptions="Center" />
+			 HorizontalOptions="Center"
+             TextColor="Red"/>
 
 	</StackLayout>
 

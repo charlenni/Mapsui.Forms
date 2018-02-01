@@ -15,7 +15,7 @@ namespace Mapsui.Forms
 		/// <summary>
 		/// Privates
 		/// </summary>
-		internal Map nativeMap;
+		internal Map map;
 
 		public MapView() : this(new MapSpan(new Position(41.890202, 12.492049), 0.1, 0.1))
 		{
@@ -45,29 +45,29 @@ namespace Mapsui.Forms
 		{
 			get
 			{
-				return nativeMap;
+				return map;
 			}
 			set
 			{
-				if (nativeMap == value)
+				if (map == value)
 					return;
 
-				if (nativeMap != null && nativeMap.Viewport != null)
+				if (map != null && map.Viewport != null)
 				{
 					// Remove listener for Viewport events
-					nativeMap.Viewport.ViewportChanged -= ViewportPropertyChanged;
+					map.Viewport.ViewportChanged -= ViewportPropertyChanged;
 				}
 
-				nativeMap = value;
+				map = value;
 
 				// Add listener for Viewport events
-				nativeMap.Viewport.ViewportChanged += ViewportPropertyChanged;
+				map.Viewport.ViewportChanged += ViewportPropertyChanged;
 
 				// Get values
-				//Center = nativeMap.Viewport.Center;
+				// Center = nativeMap.Viewport.Center;
 				// Set values
 				UpdateVisibleRegion(LastMoveToRegion);
-				nativeMap.BackColor = Color.Red.ToMapsuiColor(); // BackgroundColor.ToMapsuiColor();
+				map.BackColor = BackgroundColor.ToMapsui();
 			}
 		}
 
@@ -76,12 +76,12 @@ namespace Mapsui.Forms
 		public MapSpan VisibleRegion
 		{
 			get {
-				if (nativeMap == null)
+				if (map == null)
 					return null;
 
-				var leftBottom = Projection.SphericalMercator.ToLonLat(nativeMap.Viewport.Extent.BottomLeft.X, nativeMap.Viewport.Extent.BottomLeft.X);
-				var rightTop = Projection.SphericalMercator.ToLonLat(nativeMap.Viewport.Extent.TopRight.X, nativeMap.Viewport.Extent.TopRight.X);
-				var center = Projection.SphericalMercator.ToLonLat(nativeMap.Viewport.Center.X, nativeMap.Viewport.Center.Y);
+				var leftBottom = Projection.SphericalMercator.ToLonLat(map.Viewport.Extent.BottomLeft.X, map.Viewport.Extent.BottomLeft.X);
+				var rightTop = Projection.SphericalMercator.ToLonLat(map.Viewport.Extent.TopRight.X, map.Viewport.Extent.TopRight.X);
+				var center = Projection.SphericalMercator.ToLonLat(map.Viewport.Center.X, map.Viewport.Center.Y);
 
 				return new MapSpan(new Position(center.Y, center.X), Math.Abs(rightTop.Y - leftBottom.Y) / 2, Math.Abs(leftBottom.X - rightTop.X) / 2);
 			}
@@ -146,7 +146,7 @@ namespace Mapsui.Forms
 			// Set new BackgroundColor to nativeMap
 			if (propertyName.Equals(nameof(BackgroundColor)))
 			{
-				nativeMap.BackColor = BackgroundColor.ToMapsuiColor();
+				map.BackColor = BackgroundColor.ToMapsui();
 			}
 
 			if (propertyName.Equals(nameof(Center)))
@@ -176,13 +176,13 @@ namespace Mapsui.Forms
 		void ViewportPropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			// Only check, if the Viewport is correct
-			if (nativeMap.Viewport.Width == 0 || nativeMap.Viewport.Height == 0)
+			if (map.Viewport.Width == 0 || map.Viewport.Height == 0)
 				return;
 
 			// Did Center changed?
 			if (e.PropertyName.Equals("Center"))
 			{
-				var centerPoint = Projection.SphericalMercator.ToLonLat(nativeMap.Viewport.Center.X, nativeMap.Viewport.Center.Y);
+				var centerPoint = Projection.SphericalMercator.ToLonLat(map.Viewport.Center.X, map.Viewport.Center.Y);
 				var centerPosition = new Position(centerPoint.Y, centerPoint.X);
 
 				if (Center.Equals(centerPosition))
@@ -216,20 +216,12 @@ namespace Mapsui.Forms
 
 		void UpdateVisibleRegion(MapSpan newMapSpan)
 		{
-			if (newMapSpan == null || VisibleRegion.Equals(newMapSpan) || nativeMap == null)
+			if (newMapSpan == null || VisibleRegion.Equals(newMapSpan) || map == null)
 				return;
 
 			LastMoveToRegion = newMapSpan;
 
-			var top = newMapSpan.Center.Latitude + newMapSpan.LatitudeDegrees;
-			var bottom = newMapSpan.Center.Latitude - newMapSpan.LatitudeDegrees;
-			var left = newMapSpan.Center.Longitude - newMapSpan.LongitudeDegrees;
-			var right = newMapSpan.Center.Longitude + newMapSpan.LongitudeDegrees;
-
-			var leftBottom = Projection.SphericalMercator.FromLonLat(left, bottom);
-			var rightTop = Projection.SphericalMercator.FromLonLat(right, top);
-
-			nativeMap.NavigateTo(new Geometries.BoundingBox(leftBottom, rightTop));
+			map.NavigateTo(LastMoveToRegion.ToMapsui());
 		}
 	}
 }

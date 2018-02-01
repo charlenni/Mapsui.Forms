@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Mapsui.Forms;
 using Mapsui.Forms.iOS;
 using UIKit;
+using CoreGraphics;
 
 // Export the rendererer, and associate it with our Mapsui Forms Control
 [assembly: ExportRenderer(typeof(MapView), typeof(MapViewRenderer))]
@@ -13,14 +14,10 @@ namespace Mapsui.Forms.iOS
 	public class MapViewRenderer : ViewRenderer<MapView, Mapsui.UI.iOS.MapControl>
 	{
 		// Mapsui Native iOS implementation
-		Mapsui.UI.iOS.MapControl mapNativeControl;
+		Mapsui.UI.iOS.MapControl mapControl;
 
 		// Our Mapsui Forms Control
-		MapView mapViewControl;
-
-		public MapViewRenderer()
-		{
-		}
+		MapView mapView;
 
 		protected override void OnElementChanged(ElementChangedEventArgs<MapView> e)
 		{
@@ -31,31 +28,31 @@ namespace Mapsui.Forms.iOS
 				MessagingCenter.Unsubscribe<MapView>(this, "Refresh");
 			}
 
-			if (mapViewControl == null && e.NewElement != null)
+			if (mapView == null && e.NewElement != null)
 			{
 				// Get the Mapsui Forms control
-				mapViewControl = e.NewElement as MapView;
+				mapView = e.NewElement as MapView;
 				// Subscribe messages for refreshing the map control
 				MessagingCenter.Subscribe<MapView>(this, "Refresh", (sender) => {
-					mapNativeControl?.RefreshGraphics();
+					mapControl?.RefreshGraphics();
 				});
 			}
 
-			if (mapNativeControl == null)
+			if (mapControl == null)
 			{
-				// Set Native iOS implementation
-				mapNativeControl = new Mapsui.UI.iOS.MapControl(UIScreen.MainScreen.NativeBounds);
+                var formsRect = mapView.Bounds;
+                var nativeRect = new CGRect(formsRect.X, formsRect.Y, formsRect.Width, formsRect.Height);
 
-				// Link our Forms Control to the Native control
-				mapNativeControl.Map = mapViewControl.Map;
-
-				// Not sure what this is for, but necessary for Mapsui on iOS
-				//mapControl.Run(60.0);
-				mapNativeControl.Frame = UIScreen.MainScreen.NativeBounds;
+                // Set Native iOS implementation
+                mapControl = new Mapsui.UI.iOS.MapControl(nativeRect)
+                {
+                    Map = mapView.Map,
+                    Frame = nativeRect
+                };
 
 				// Set native app
-				SetNativeControl(mapNativeControl);
+				SetNativeControl(mapControl);
 			}
 		}
-	}
+    }
 }
