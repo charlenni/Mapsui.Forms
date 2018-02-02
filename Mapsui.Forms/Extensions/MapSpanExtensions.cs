@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Mapsui.Forms.Extensions
+﻿namespace Mapsui.Forms.Extensions
 {
     public static class MapSpanExtensions
     {

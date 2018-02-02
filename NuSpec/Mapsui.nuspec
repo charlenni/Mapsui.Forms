@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+
+  <metadata>
+    <id>Mapsui.Forms</id>
+    <version>$version$</version>
+    <title>Mapsui.Forms</title>
+    <authors>Dirk Weltz</authors>
+    <owners>Dirk Weltz</owners>
+    <projectUrl>https://github.com/charlenni/Mapsui.Forms</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Mapsui.Forms - Using Mapsui with Xamarin.Forms
+    </description>
+    <tags>map maps mapping geo gis osm xamarin.forms</tags>
+    <language>en-US</language>
+    <dependencies>
+      <!-- [ or ] is including, ( or ) is excluding -->
+      <group>
+        <dependency id="Mapsui" version="[1.3.1,2.0.0)"/>
+      </group>
+      <group targetFramework="uap">
+        <dependency id="Mapsui" version="[1.3.1,2.0.0)"/>
+      </group>
+      <group targetFramework="MonoAndroid">
+        <dependency id="Mapsui" version="[1.3.1,2.0.0)"/>
+      </group>
+      <group targetFramework="Xamarin.iOS">
+        <dependency id="Mapsui" version="[1.3.1,2.0.0)"/>
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\Release\Portable\Mapsui.Forms.dll" target="lib\portable-net45+win+WindowsPhoneApp81+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Mapsui.Forms.dll" />
+
+    <file src="..\Release\UWP\Mapsui.Forms.dll" target="lib\uap\Mapsui.Forms.dll" />
+    <file src="..\Release\UWP\Mapsui.Forms.Uwp.dll" target="lib\uap\Mapsui.Forms.Uwp.dll" />
+
+    <file src="..\Release\Xamarin.Android\Mapsui.Forms.dll" target="lib\MonoAndroid\Mapsui.Forms.dll" />
+    <file src="..\Release\Xamarin.Android\Mapsui.Forms.Android.dll" target="lib\MonoAndroid\Mapsui.Forms.Android.dll" />
+
+    <file src="..\Release\Xamarin.iOS\Mapsui.Forms.dll" target="lib\Xamarin.iOS\Mapsui.Forms.dll" />
+    <file src="..\Release\Xamarin.iOS\Mapsui.Forms.iOS.dll" target="lib\Xamarin.iOS\Mapsui.Forms.iOS.dll" />
+  </files>
+</package>

@@ -12,24 +12,24 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
+    <StackLayout Orientation="Vertical" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
 	<Label Text="Welcome to MapsUI!"
-		   VerticalOptions="Fill"
+		   VerticalOptions="Start"
 		   HorizontalOptions="Center" />
 
 	<mapsui:MapView x:Name="mapView"
 		  VerticalOptions="FillAndExpand"
-		  HorizontalOptions="Fill"
+          HorizontalOptions="Fill"
 		  BackgroundColor="Gray" 
 		  Margin="10" />
 
 	<StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="10" >
 
 	  <Label BindingContext="{x:Reference Name=mapView}"
-			 Text="{Binding Center, Converter={StaticResource PositionToString}, ConverterParameter='P DD° MM.mmm\'|P DDD° MM.mmm\'|North|South|East|West'}"
+			 Text="{Binding Center, Converter={StaticResource PositionToString}, ConverterParameter='P DD° MM.mmm\'|P DDD° MM.mmm\'|N|S|E|W'}"
 			 VerticalOptions="Fill"
-			 HorizontalOptions="Center"
+			 HorizontalOptions="FillAndExpand"
              HorizontalTextAlignment="Center"
              TextColor="Red"/>
 

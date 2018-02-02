@@ -2,7 +2,10 @@ using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using Mapsui.Forms;
 using Mapsui.Forms.Android;
+using Mapsui.Forms.Extensions;
 using Android.Content;
+using Android.Runtime;
+using Android.Views;
 
 // Export the rendererer, and associate it with our Mapsui Forms Control
 [assembly: ExportRenderer(typeof(MapView), typeof(MapViewRenderer))]
@@ -19,6 +22,14 @@ namespace Mapsui.Forms.Android
 
         public MapViewRenderer(Context context) : base(context)
         {
+        }
+
+        protected override void OnVisibilityChanged(global::Android.Views.View changedView, [GeneratedEnum] ViewStates visibility)
+        {
+            base.OnVisibilityChanged(changedView, visibility);
+
+            if (visibility == ViewStates.Visible)
+                mapView.Map.NavigateTo(mapView.LastMoveToRegion.ToMapsui());
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<MapView> e)
@@ -48,9 +59,10 @@ namespace Mapsui.Forms.Android
 
 				// Link our Forms control to the native control
 				mapControl.Map = mapView.Map;
+                mapControl.Map.NavigateTo(mapView.LastMoveToRegion.ToMapsui());
 
-				// Get events from Map
-				mapControl.Map.PropertyChanged += mapView.MapPropertyChanged;
+                // Get events from Map
+                mapControl.Map.PropertyChanged += mapView.MapPropertyChanged;
 
 				// Set native app
 				SetNativeControl(mapControl);

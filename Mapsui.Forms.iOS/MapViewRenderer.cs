@@ -4,6 +4,7 @@ using Mapsui.Forms;
 using Mapsui.Forms.iOS;
 using UIKit;
 using CoreGraphics;
+using Mapsui.Forms.Extensions;
 
 // Export the rendererer, and associate it with our Mapsui Forms Control
 [assembly: ExportRenderer(typeof(MapView), typeof(MapViewRenderer))]
@@ -44,15 +45,49 @@ namespace Mapsui.Forms.iOS
                 var nativeRect = new CGRect(formsRect.X, formsRect.Y, formsRect.Width, formsRect.Height);
 
                 // Set Native iOS implementation
-                mapControl = new Mapsui.UI.iOS.MapControl(nativeRect)
-                {
-                    Map = mapView.Map,
-                    Frame = nativeRect
-                };
+                mapControl = new Mapsui.UI.iOS.MapControl(nativeRect);
 
-				// Set native app
-				SetNativeControl(mapControl);
+                mapControl.Map = mapView.Map;
+                mapControl.Frame = nativeRect;
+                mapControl.Map.NavigateTo(mapView.LastMoveToRegion.ToMapsui());
+
+                // Get events from Map
+                mapControl.Map.PropertyChanged += mapView.MapPropertyChanged;
+
+                // Set native app
+                SetNativeControl(mapControl);
 			}
 		}
+
+        public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+        {
+            return Control.GetSizeRequest(widthConstraint, heightConstraint);
+        }
+
+        bool _shouldUpdateRegion = true;
+
+        public override void LayoutSubviews()
+        {
+            base.LayoutSubviews();
+
+            if (_shouldUpdateRegion)
+            {
+                _shouldUpdateRegion = false;
+            }
+
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (mapControl != null)
+                {
+                    MessagingCenter.Unsubscribe<MapView>(this, "Refresh");
+                }
+            }
+
+            base.Dispose(disposing);
+        }
     }
 }
