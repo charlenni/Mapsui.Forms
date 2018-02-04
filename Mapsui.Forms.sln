@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapsui.Forms.Android", "Mapsui.Forms.Android\Mapsui.Forms.Android.csproj", "{30A01972-4589-4D20-A58B-8BE215404013}"
 EndProject
@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapsui.Forms.Tests", "Tests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{E1922F15-03F3-4362-BE7A-EF4C812ED353}"
 	ProjectSection(SolutionItems) = preProject
-		NuSpec\Mapsui.nuspec = NuSpec\Mapsui.nuspec
+		NuSpec\Mapsui.Forms.nuspec = NuSpec\Mapsui.Forms.nuspec
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{E1CFB0FE-5260-4219-B53D-B8530174B4AC}"

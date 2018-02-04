@@ -1,7 +1,7 @@
 SETLOCAL
 SET VERSION=%1
 CALL Scripts\buildpack %VERSION%
-nuget push .\Release\Mapsui.%VERSION%.nupkg -source nuget.org
+nuget push .\Release\Mapsui.Forms.%VERSION%.nupkg -source nuget.org
 git commit -m %VERSION% -a
 git tag %VERSION%
 git push origin %VERSION%

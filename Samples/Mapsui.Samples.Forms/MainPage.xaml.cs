@@ -39,7 +39,8 @@ namespace Mapsui.Samples.Forms
             //			mapView.Map.Viewport.Resolution = mapView.Map.Resolutions[9];
             //			mapView.BackgroundColor = Color.Red;
             //			mapView.MoveToCenter(new Xamarin.Forms.Maps.Position(48.4789167, 9.2706));
-            mapView.MoveToCenter(centerOfLondonOntario);
+            //mapView.MoveToCenter(centerOfLondonOntario);
+            mapView.Map.NavigateTo(new MapSpan(centerOfLondonOntario, mapView.LastMoveToRegion.LatitudeDegrees, mapView.LastMoveToRegion.LongitudeDegrees + 0.1).ToMapsui());
             var test = mapView.VisibleRegion;
 		}
 	}

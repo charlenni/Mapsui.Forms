@@ -7,4 +7,4 @@ rmdir Release /s /q
 msbuild tools\versionupdater\versionupdater.csproj /p:Configuration=Release /p:OutputPath=..
 tools\versionupdater /version:%VERSION%
 msbuild Scripts\build.proj
-nuget pack NuSpec\Mapsui.nuspec -Version %VERSION% -outputdirectory Release
+nuget pack NuSpec\Mapsui.Forms.nuspec -Version %VERSION% -outputdirectory Release

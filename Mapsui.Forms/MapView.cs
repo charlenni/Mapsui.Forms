@@ -179,13 +179,13 @@ namespace Mapsui.Forms
 			// Did Center changed?
 			if (e.PropertyName.Equals("Center"))
 			{
-				var centerPoint = Projection.SphericalMercator.ToLonLat(map.Viewport.Center.X, map.Viewport.Center.Y);
-				var centerPosition = new Position(centerPoint.Y, centerPoint.X);
+                var centerPosition = map.Viewport.Center.ToForms();
 
 				if (Center.Equals(centerPosition))
 					return;
 
 				Center = centerPosition;
+                LastMoveToRegion = new MapSpan(Center, LastMoveToRegion.LatitudeDegrees, LastMoveToRegion.LongitudeDegrees);
 
 				// We don't need to resend event again
 				return;
@@ -207,7 +207,16 @@ namespace Mapsui.Forms
                 return;
 			}
 
-			RaisePropertyChanged(e.PropertyName);
+            // Did Viewport resolution changed
+            if (e.PropertyName.Equals("Resolution"))
+            {
+                var bottomLeft = map.Viewport.Extent.BottomLeft.ToForms();
+                var topRight = map.Viewport.Extent.TopRight.ToForms();
+
+                LastMoveToRegion = new MapSpan(Center, Math.Abs(bottomLeft.Latitude - topRight.Latitude), Math.Abs(bottomLeft.Longitude - topRight.Longitude));
+            }
+
+            RaisePropertyChanged(e.PropertyName);
 		}
 
 		/// <summary>
