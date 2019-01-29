@@ -11,7 +11,7 @@
         {
             var latLon = Mapsui.Projection.SphericalMercator.ToLonLat(point.X, point.Y);
 
-            return new Xamarin.Forms.Maps.Position(latLon.X, latLon.Y);
+            return new Xamarin.Forms.Maps.Position(latLon.Y, latLon.X);
         }
 
         /// <summary>
